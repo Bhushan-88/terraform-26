@@ -7,5 +7,5 @@ variable "aws_region" {
 variable "backend_bucket_name" {
   description = "Globally unique name for the Terraform backend S3 bucket"
   type        = string
-  default     = "my-terraform-backend-bucket-123456"
+  default     = "target-corporate-terraform-backend"
 }
