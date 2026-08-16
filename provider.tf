@@ -8,6 +8,13 @@ terraform {
       version = "~> 6.0"
     }
   }
+
+  backend "s3" {
+    bucket         = "target-corporate-backend-12345"
+    key            = "terraform.tfstate"
+    region         = "us-east-1"
+    use_lockfile = true
+  }
 }
 # This block specifies the required Terraform version and the AWS provider version. 
 # It ensures that the configuration is compatible with Terraform version 1.15.8 or higher and uses the AWS provider version 6.x.
