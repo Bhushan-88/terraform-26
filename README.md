@@ -22,7 +22,17 @@ Terraform variables are input parameters that allow us to pass dynamic values in
 Output = Information Terraform gives back to you
 utputs.tf tells you important information about the infrastructure Terraform created.
 
-# 4.In Terraform, import is used when a resource already exists in AWS (or another provider) but is not currently managed by Terraform, and you want Terraform to start managing it.
+# 4.imports
+In Terraform, import is used when a resource already exists in AWS (or another provider) but is not currently managed by Terraform, and you want Terraform to start managing it.
 
-# 5.
+Interview answer :
+Terraform import is used to bring an existing infrastructure resource under Terraform management by associating it with a Terraform resource and storing its information in the Terraform state. Import does not create the resource.
+
+# 5.Ternary Operation
+In Terraform, the ternary operator is used to choose one of two values based on a condition.
+
+Interview answer :
+The Terraform ternary operator is a conditional expression used to select one of two values based on a condition. Its syntax is condition ? true_value : false_value.
+
+
 ```
