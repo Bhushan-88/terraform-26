@@ -1,8 +1,7 @@
 # This block defines an AWS key pair resource named "my_key_pair". It specifies the key name as "terra-auto-server-key" and retrieves the public key from a file named "terra-auto-server-key.pub". This key pair can be used for SSH access to EC2 instances created in the AWS environment.
 resource "aws_key_pair" "my_key_pair" {
   key_name   = "terra-auto-server-key"
-  public_key = file ("\\terra-auto-server-key.pub")
-  
+  public_key = file("${path.module}/terra-auto-server-key.pub")
 }
 # This block defines an AWS key pair resource named "my_key_pair". It specifies the key name as "terra-auto-server-key" and retrieves the public key from a file named "terra-auto-server-key.pub". This key pair can be used for SSH access to EC2 instances created in the AWS environment.
 data "aws_ami" "ubuntu_ami" {
@@ -55,11 +54,9 @@ resource "aws_vpc_security_group_ingress_rule" "allow_http" {
 # Egress rule (outbound rule) for all traffic
 resource "aws_vpc_security_group_egress_rule" "allow_all_outbound" {
   security_group_id = aws_security_group.my_ec2_sg.id
-  cidr_ipv4        = "0.0.0.0/0"
-  from_port       = 0
-  ip_protocol     = "-1"
-  to_port         = 0
-} 
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1"
+}
 resource "aws_instance" "my_ec2_instance" {
     ami           = data.aws_ami.ubuntu_ami.id
     instance_type = "t3.micro"
