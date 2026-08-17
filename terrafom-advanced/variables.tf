@@ -11,5 +11,5 @@ variable "ec2_instance_volume_size" {
 variable "ec2_instance_state" {
   description = "Desired state of the EC2 instance"
   type        = string
-  default     = "stopped"
+  default     = "running"
 }
