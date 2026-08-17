@@ -7,4 +7,10 @@ terraform {
       version = "~> 6.38.0"
     }
   }
+  backend "s3" {
+    bucket         = "target-corporate-1"
+    key            = "terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "target-corporate"
+  }
 }
