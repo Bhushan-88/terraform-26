@@ -19,4 +19,10 @@ variable as a placeholder for a value.
 Terraform variables are input parameters that allow us to pass dynamic values into Terraform configurations, making the infrastructure code reusable, configurable, and easier to maintain.
 
 # 3.Output
+Output = Information Terraform gives back to you
+utputs.tf tells you important information about the infrastructure Terraform created.
+
+# 4.In Terraform, import is used when a resource already exists in AWS (or another provider) but is not currently managed by Terraform, and you want Terraform to start managing it.
+
+# 5.
 ```
