@@ -64,17 +64,17 @@ resource "aws_instance" "my_ec2_instance" {
     key_name      = aws_key_pair.my_key_pair.key_name
     
     root_block_device {
-        volume_size = 8
+        volume_size = var.ec2_instance_volume_size
         volume_type = "gp3"
     }
     tags = {
-        Name = "terra-auto-server"
+        Name = var.ec2_instance_name
     }
 }
 
 
 resource "aws_ec2_instance_state" "my_instance_state" {
     instance_id = aws_instance.my_ec2_instance.id
-    state = "running"
+    state = var.ec2_instance_state
 }
 
