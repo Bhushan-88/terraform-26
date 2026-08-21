@@ -26,7 +26,7 @@ locals {
     }
 }
 
-module "dev-infra" {
+module "ec2" {
   source = "./modules/ec2"
   env = "dev"
   ec2_instance_count = local.dev.ec2_instance_count

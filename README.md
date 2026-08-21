@@ -37,6 +37,13 @@ The Terraform ternary operator is a conditional expression used to select one of
 
 ```
 # aws multi env Modules
+                EC2 Module
+                    │
+        ┌───────────┼───────────┐
+        ↓           ↓           ↓
+       Dev         Test        Prod
+You write the infrastructure logic once and reuse it.
+
 Main benefits
 Reusability — write once, use multiple times
 Consistency — same infrastructure pattern everywhere
@@ -45,3 +52,16 @@ Scalability — easily create multiple similar resources
 Standardization — teams can follow the same infrastructure pattern
 
 Instead of writing the same EC2 configuration again and again, you create it once as a module and call it whenever you need it.
+
+## Example: Create an EC2 module
+terraform-project/
+│
+├── main.tf
+├── variables.tf
+├── outputs.tf
+│
+└── modules/
+    └── ec2/
+        ├── main.tf
+        ├── variables.tf
+        └── outputs.tf
