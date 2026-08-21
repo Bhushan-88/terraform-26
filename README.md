@@ -65,3 +65,11 @@ terraform-project/
         ├── main.tf
         ├── variables.tf
         └── outputs.tf
+
+
+```bash
+terraform workspace new dev
+terraform workspace list
+
+
+```
