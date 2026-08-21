@@ -23,3 +23,8 @@ variable "ec2_instance_state" {
   type        = string
   default     = "running"
 }
+variable "ec2_instance_type" {
+  description = "Type of the EC2 instance"
+  type        = string
+  default     = "t3.micro"
+}

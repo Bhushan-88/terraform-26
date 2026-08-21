@@ -1,7 +1,3 @@
-locals {
-  ec2_key_name = var.env == "dev" ? "terra-auto-server-key-dev" : var.ec2_instance_key_name
-}
-
 # This block defines an AWS key pair resource named "my_key_pair". It specifies the key name as "terra-auto-server-key" and retrieves the public key from a file named "terra-auto-server-key.pub". This key pair can be used for SSH access to EC2 instances created in the AWS environment.
 resource "aws_key_pair" "my_key_pair" {
   key_name   = "${var.env}-terra-auto-server-key" # Use the environment variable to create a unique key name for each environment
@@ -35,7 +31,7 @@ data "aws_vpc" "default" {
 
 # security group
 resource "aws_security_group" "my_ec2_sg" {
-  name        = "terra_auto_sg"
+  name        = "${var.env}-terra_auto_sg"
   description = "Security group for EC2 instance"
   vpc_id      = data.aws_vpc.default.id
 }
@@ -64,7 +60,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_outbound" {
 }
 resource "aws_instance" "my_ec2_instance" {
     ami           = data.aws_ami.ubuntu_ami.id
-    instance_type = "t3.micro"
+    instance_type = var.ec2_instance_type
     vpc_security_group_ids = [aws_security_group.my_ec2_sg.id]
     key_name      = aws_key_pair.my_key_pair.key_name
     
