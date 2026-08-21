@@ -58,6 +58,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_outbound" {
   cidr_ipv4         = "0.0.0.0/0"
   ip_protocol       = "-1"
 }
+# This block defines an AWS EC2 instance resource named "my_ec2_instance". It uses the AMI ID retrieved from the "ubuntu_ami" data source, specifies the instance type, associates the security group created earlier, and uses the key pair for SSH access. The root block device is configured with a specified volume size and type. Additionally, tags are applied to the instance for identification and environment categorization.
 resource "aws_instance" "my_ec2_instance" {
     count         = var.ec2_instance_count
     ami           = data.aws_ami.ubuntu_ami.id
@@ -75,7 +76,7 @@ resource "aws_instance" "my_ec2_instance" {
     }
 }
 
-
+# This block defines an AWS EC2 instance state resource named "my_instance_state". It references the EC2 instance created earlier and sets its desired state based on the "ec2_instance_state" variable. This allows for controlling the state of the EC2 instance (e.g., running, stopped) as specified in the module's input variables.
 resource "aws_ec2_instance_state" "my_instance_state" {
     instance_id = aws_instance.my_ec2_instance.id
     state = var.ec2_instance_state
