@@ -1,5 +1,5 @@
 locals {
-  ec2_key_name = "terra-auto-server-key"
+  ec2_key_name = var.env == "dev" ? "terra-auto-server-key-dev" : "terra-auto-server-key-prod"
 }
 
 # This block defines an AWS key pair resource named "my_key_pair". It specifies the key name as "terra-auto-server-key" and retrieves the public key from a file named "terra-auto-server-key.pub". This key pair can be used for SSH access to EC2 instances created in the AWS environment.
