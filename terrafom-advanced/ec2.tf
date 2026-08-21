@@ -1,3 +1,4 @@
+# This block defines a local variable named "ec2_key_name". It uses a conditional expression to determine the value of the variable based on the value of the "env" variable. If the "env" variable is set to "dev", the "ec2_key_name" will be set to "terra-auto-server-key-dev". Otherwise, it will be set to "terra-auto-server-key-prod". This allows for different key names to be used in different environments (development vs production).
 locals {
   ec2_key_name = var.env == "dev" ? "terra-auto-server-key-dev" : "terra-auto-server-key-prod"
 }
