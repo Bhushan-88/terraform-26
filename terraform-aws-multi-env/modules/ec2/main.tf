@@ -59,6 +59,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_outbound" {
   ip_protocol       = "-1"
 }
 resource "aws_instance" "my_ec2_instance" {
+    count         = var.ec2_instance_count
     ami           = data.aws_ami.ubuntu_ami.id
     instance_type = var.ec2_instance_type
     vpc_security_group_ids = [aws_security_group.my_ec2_sg.id]
@@ -69,7 +70,7 @@ resource "aws_instance" "my_ec2_instance" {
         volume_type = "gp3"
     }
     tags = {
-        Name = var.ec2_instance_name
+        Name = "${var.env}-${var.ec2_instance_name}"
     }
 }
 
