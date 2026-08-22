@@ -28,6 +28,6 @@ locals {
 
 module "ec2" {
   source = "./modules/ec2"
-  env = terraform.workspace #dev 
+  env = terraform.workspace #dev this value will be used to select the environment
   ec2_instance_count = local.dev.ec2_instance_count
 }

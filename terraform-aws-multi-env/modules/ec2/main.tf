@@ -77,8 +77,11 @@ resource "aws_instance" "my_ec2_instance" {
 }
 
 # This block defines an AWS EC2 instance state resource named "my_instance_state". It references the EC2 instance created earlier and sets its desired state based on the "ec2_instance_state" variable. This allows for controlling the state of the EC2 instance (e.g., running, stopped) as specified in the module's input variables.
-resource "aws_ec2_instance_state" "my_instance_state" {
-    instance_id = aws_instance.my_ec2_instance.id
-    state = var.ec2_instance_state
-}
+// ...existing code...
 
+resource "aws_ec2_instance_state" "my_instance_state" {
+  count       = var.ec2_instance_count
+  instance_id = aws_instance.my_ec2_instance[count.index].id
+  state       = var.ec2_instance_state
+
+}
