@@ -35,5 +35,10 @@ module "ec2" {
   ec2_instance_count = local.current.ec2_instance_count
 }
 module "s3" {
-  
+    source = "./modules/s3"
+    env = terraform.workspace #This value will be dev, stg, prd based on the workspace selected  
+}
+module "dynamodb" {
+    source = "./modules/dynamodb"
+    env = terraform.workspace #This value will be dev, stg, prd based on the workspace selected  
 }
