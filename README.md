@@ -71,6 +71,9 @@ terraform-project/
 terraform workspace new dev
 terraform workspace select dev
 terraform workspace list
+terraform workspace show
+
+
 
 
 ```
