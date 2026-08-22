@@ -11,7 +11,7 @@ variable "ec2_instance_key_name" {
 variable "env" {
   description = "Deployment environment"
   type        = string
-  
+
 }
 variable "ec2_instance_volume_size" {
   description = "Size of the EC2 instance root volume in GB"

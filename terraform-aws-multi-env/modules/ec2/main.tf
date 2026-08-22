@@ -13,19 +13,19 @@ resource "aws_security_group" "my_ec2_sg" {
 #ingess rule (inbound rule) for SSH access
 resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
   security_group_id = aws_security_group.my_ec2_sg.id
-  description      = "Allow SSH access"
-  from_port       = 22
-  ip_protocol     = "tcp"
-  to_port         = 22
-  cidr_ipv4        = "0.0.0.0/0"
+  description       = "Allow SSH access"
+  from_port         = 22
+  ip_protocol       = "tcp"
+  to_port           = 22
+  cidr_ipv4         = "0.0.0.0/0"
 }
 resource "aws_vpc_security_group_ingress_rule" "allow_http" {
   security_group_id = aws_security_group.my_ec2_sg.id
-  description     = "Allow HTTP access"
-  cidr_ipv4        = "0.0.0.0/0"
-  from_port       = 80
-  ip_protocol     = "tcp"
-  to_port         = 80
+  description       = "Allow HTTP access"
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
 }
 # Egress rule (outbound rule) for all traffic
 resource "aws_vpc_security_group_egress_rule" "allow_all_outbound" {
@@ -35,20 +35,20 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_outbound" {
 }
 # This block defines an AWS EC2 instance resource named "my_ec2_instance". It uses the AMI ID retrieved from the "ubuntu_ami" data source, specifies the instance type, associates the security group created earlier, and uses the key pair for SSH access. The root block device is configured with a specified volume size and type. Additionally, tags are applied to the instance for identification and environment categorization.
 resource "aws_instance" "my_ec2_instance" {
-    count         = var.ec2_instance_count
-    ami           = data.aws_ami.ubuntu_ami.id
-    instance_type = var.ec2_instance_type
-    vpc_security_group_ids = [aws_security_group.my_ec2_sg.id]
-    key_name      = aws_key_pair.my_key_pair.key_name
-    
-    root_block_device {
-        volume_size = var.ec2_instance_volume_size
-        volume_type = "gp3"
-    }
-    tags = {
-        Name = "${var.env}-${var.ec2_instance_name}"
-        Environment = var.env
-    }
+  count                  = var.ec2_instance_count
+  ami                    = data.aws_ami.ubuntu_ami.id
+  instance_type          = var.ec2_instance_type
+  vpc_security_group_ids = [aws_security_group.my_ec2_sg.id]
+  key_name               = aws_key_pair.my_key_pair.key_name
+
+  root_block_device {
+    volume_size = var.ec2_instance_volume_size
+    volume_type = "gp3"
+  }
+  tags = {
+    Name        = "${var.env}-${var.ec2_instance_name}"
+    Environment = var.env
+  }
 }
 
 # This block defines an AWS EC2 instance state resource named "my_instance_state". It references the EC2 instance created earlier and sets its desired state based on the "ec2_instance_state" variable. This allows for controlling the state of the EC2 instance (e.g., running, stopped) as specified in the module's input variables.
