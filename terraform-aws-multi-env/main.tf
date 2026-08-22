@@ -6,7 +6,7 @@ locals {
         ec2_instance_volume_size = 8
         ec2_instance_state = "running"
         ec2_instance_type = "t3.micro"
-        ec2_instance_count = 1
+        ec2_instance_count = 2
     }
     stg = {
         ec2_instance_name = "stg-terra-auto-server"
