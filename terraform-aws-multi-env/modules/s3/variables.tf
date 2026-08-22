@@ -9,3 +9,7 @@ variable "env" {
   type        = string
   
 }
+variable "s3_bucket_count" {
+  description = "this variable holds s3 bucket count"
+  type = number
+}

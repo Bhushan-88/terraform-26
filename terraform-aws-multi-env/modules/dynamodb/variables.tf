@@ -6,5 +6,9 @@ variable "dynamodb_table_name" {
 variable "env" {
   description = "The environment for which the DynamoDB table is being created (dev, stg, prd)"
   type  = string
-  
+
+}
+variable "dynamodb_table_count" {
+  description = "The number of DynamoDB tables to create"
+  type        = number
 }
