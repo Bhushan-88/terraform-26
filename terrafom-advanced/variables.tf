@@ -1,7 +1,7 @@
 variable "ec2_instance_name" {
   description = "Name of the EC2 instance"
   type        = string
-  default     = "terra-auto-server-key"
+  default     = "ansible-master"
 }
 variable "ec2_key_name" {
   description = "Name of the EC2 key pair to use for SSH access"
