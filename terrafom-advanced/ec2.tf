@@ -1,6 +1,6 @@
 # This block defines a local variable named "ec2_key_name". It uses a conditional expression to determine the value of the variable based on the value of the "env" variable. If the "env" variable is set to "dev", the "ec2_key_name" will be set to "terra-auto-server-key-dev". Otherwise, it will be set to "terra-auto-server-key-prod". This allows for different key names to be used in different environments (development vs production).
 locals {
-  ec2_key_name = var.env == "dev" ? "terra-auto-server-key-dev" : "terra-auto-server-key-prod"
+  ec2_key_name = var.ec2_key_name
 }
 
 # This block defines an AWS key pair resource named "my_key_pair". It specifies the key name as "terra-auto-server-key" and retrieves the public key from a file named "terra-auto-server-key.pub". This key pair can be used for SSH access to EC2 instances created in the AWS environment.
